@@ -6,4 +6,4 @@
 
 ### Bugs:
 
-[] Movement and pull still buggy. Pencet z ketarik mulu.
+[ ] Movement and pull still buggy. Pencet z ketarik mulu.
