@@ -7,4 +7,6 @@
 ### Bugs:
 
 [ ] Movement and pull still buggy. Pencet z ketarik mulu.  
-[ ] Z ga tarik ke tower
+[ ] Z ga tarik ke tower  
+[ ] Memilih tower sesuai kehendak player untuk menarik kapal  
+[ ] Menambah satu stage untuk player.
