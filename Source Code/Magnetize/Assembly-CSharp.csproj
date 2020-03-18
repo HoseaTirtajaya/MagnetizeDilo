@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\UIControllerScript.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Scripts/Script/Tes(Unty)/Magnetize/Source Code/Magnetize/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
