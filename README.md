@@ -6,5 +6,5 @@
 
 ### Bugs:
 
-[ ] Movement and pull still buggy. Pencet z ketarik mulu.
+[ ] Movement and pull still buggy. Pencet z ketarik mulu.  
 [ ] Z ga tarik ke tower
