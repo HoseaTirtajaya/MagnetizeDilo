@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       startPosition = this.transform.position;
+       startPosition = this.transform.localPosition;
        rb2D = this.gameObject.GetComponent<Rigidbody2D>();
        myAudio = this.gameObject.GetComponent<AudioSource>();
        uiControl = GameObject.Find("Canvas").GetComponent<UIControllerScript>();
@@ -28,10 +28,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       //Move the object
-       rb2D.velocity = -transform.up * moveSpeed;
+         Debug.Log(rb2D.angularVelocity);
+        //Debug.Log(rb2D.velocity);
+        rb2D.velocity = -transform.up * moveSpeed;
 
-        if (Input.GetKeyDown(KeyCode.Z) && !isPulled)
+        if (Input.GetKey(KeyCode.Z) && !isPulled)
         {
             if (closestTower != null && hookedTower == null)
             {
@@ -50,26 +51,25 @@ public class PlayerMovement : MonoBehaviour
                 rb2D.angularVelocity = -rotateSpeed / distance;
                 isPulled = true;
             }
+            if (isCrashed)
+            {
+                if (!myAudio.isPlaying)
+                {
+                    restartPosition();
+                }
+                else
+                {
+                    //Move the object
+                    rb2D.velocity = -transform.up * moveSpeed;
+                    rb2D.angularVelocity = 0f;
+                }
+            }
         }
 
         if (Input.GetKeyUp(KeyCode.Z))
         {
+            rb2D.angularVelocity -= 100;
             isPulled = false;
-        }
-
-        if (isCrashed)
-        {
-            if (!myAudio.isPlaying)
-            {
-                //Restart scene
-                restartPosition();
-            }
-        }
-        else
-        {
-            //Move the object
-            rb2D.velocity = -transform.up * moveSpeed;
-            rb2D.angularVelocity = 0f;
         }
     }
 

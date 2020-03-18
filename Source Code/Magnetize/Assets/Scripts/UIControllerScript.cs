@@ -48,5 +48,6 @@ public class UIControllerScript : MonoBehaviour
         pausePanel.SetActive(true);
         resumeBtn.SetActive(false);
         levelClearTxt.SetActive(true);
+        Time.timeScale = 0;
     }
 }

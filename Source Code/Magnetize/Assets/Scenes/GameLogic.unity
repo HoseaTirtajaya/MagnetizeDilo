@@ -296,7 +296,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LEVEL CLEAR
+  m_Text: LEVEL CLEAR!
 --- !u!222 &270485783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1112,8 +1112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  pullForce: 100
-  rotateSpeed: 360
+  pullForce: 30
+  rotateSpeed: -360
 --- !u!82 &1222269749
 AudioSource:
   m_ObjectHideFlags: 0
