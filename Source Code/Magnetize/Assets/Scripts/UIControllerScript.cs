@@ -8,6 +8,7 @@ public class UIControllerScript : MonoBehaviour
     public GameObject pausePanel;
     public GameObject resumeBtn;
     public GameObject levelClearTxt;
+    public GameObject nextlv;
     private Scene currActiveScene;
 
     // Start is called before the first frame update
@@ -47,7 +48,19 @@ public class UIControllerScript : MonoBehaviour
     {
         pausePanel.SetActive(true);
         resumeBtn.SetActive(false);
+        nextlv.SetActive(true);
         levelClearTxt.SetActive(true);
         Time.timeScale = 0;
+    }
+    public void LoadScene(string name)
+    {
+        //Debug.Log(string.IsNullOrEmpty(name));
+        //Melakukan pengecekan jika name tidak null atau empty
+        if (!string.IsNullOrEmpty(name))
+        {
+            //membuka scene dengan nama sesuai dengan variable name
+            SceneManager.LoadScene(name);
+            Time.timeScale = 1;
+        }
     }
 }

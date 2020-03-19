@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private UIControllerScript uiControl;
     private AudioSource myAudio;
     private bool isCrashed = false;
+    private bool isGreen1 = false;
+    private bool isGreen2 = false;
+    private GameObject dummy;
+    //private GameObject dummy2;
     private Vector3 startPosition;
 
 
@@ -24,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
        rb2D = this.gameObject.GetComponent<Rigidbody2D>();
        myAudio = this.gameObject.GetComponent<AudioSource>();
        uiControl = GameObject.Find("Canvas").GetComponent<UIControllerScript>();
+       
     }
 
     // Update is called once per frame
@@ -39,17 +44,41 @@ public class PlayerMovement : MonoBehaviour
             Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
 
             RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
-            if (hit.collider.name == "TowerBottom")
+            if (hit.collider.name == "TowerBottom") // green1
             {
                 Debug.Log("Tower Bottom");
                 hookedTower = hit.collider.gameObject;
+                if (isGreen2)
+                {
+                    isGreen2 = false;
+
+                }
+                    hookedTower.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                    isGreen1 = true;
 
             }
-            else if(hit.collider.name == "TowerTop")
+            else if (hit.collider.name == "TowerTop") //green2
             {
                 Debug.Log("Tower Top");
                 hookedTower = hit.collider.gameObject;
+                if (isGreen1)
+                {
+                    isGreen2 = false;
+                } 
+                    hookedTower.gameObject.GetComponent<SpriteRenderer>().color = Color.green;
+                    isGreen1 = true;
             }
+        }
+
+        if(!isGreen1)
+        {
+            dummy = GameObject.Find("TowerBottom");
+            dummy.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else if(!isGreen2)
+        {
+            dummy = GameObject.Find("TowerTop");
+            dummy.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
         if (Input.GetKey(KeyCode.Z) && !isPulled)
@@ -119,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
     }
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Tower")
+        if (collision.gameObject.tag == "Tower" && hookedTower == null)
         {
             closestTower = collision.gameObject;
 
