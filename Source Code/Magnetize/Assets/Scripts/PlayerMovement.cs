@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isCrashed = false;
     private Vector3 startPosition;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,28 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         Debug.Log(rb2D.angularVelocity);
+         //Debug.Log(rb2D.angularVelocity);
         //Debug.Log(rb2D.velocity);
         rb2D.velocity = -transform.up * moveSpeed;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePos2D = new Vector2(mousePos.x, mousePos.y);
+
+            RaycastHit2D hit = Physics2D.Raycast(mousePos2D, Vector2.zero);
+            if (hit.collider.name == "TowerBottom")
+            {
+                Debug.Log("Tower Bottom");
+                hookedTower = hit.collider.gameObject;
+
+            }
+            else if(hit.collider.name == "TowerTop")
+            {
+                Debug.Log("Tower Top");
+                hookedTower = hit.collider.gameObject;
+            }
+        }
 
         if (Input.GetKey(KeyCode.Z) && !isPulled)
         {

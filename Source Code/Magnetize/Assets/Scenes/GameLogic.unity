@@ -745,7 +745,7 @@ PrefabInstance:
     - target: {fileID: 1640669513134972597, guid: 40bc43c0740f944459a9f20c4eca4928,
         type: 3}
       propertyPath: m_Name
-      value: Tower
+      value: TowerBottom
       objectReference: {fileID: 0}
     - target: {fileID: 1640669513134972599, guid: 40bc43c0740f944459a9f20c4eca4928,
         type: 3}
